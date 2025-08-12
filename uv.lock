@@ -540,7 +540,7 @@ wheels = [
 ]
 
 [[package]]
-name = "gong"
+name = "gongy"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

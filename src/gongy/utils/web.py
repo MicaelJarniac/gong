@@ -15,7 +15,7 @@ from aiohttp import ClientResponseError
 from loguru import logger
 from pydantic import BaseModel, Field
 
-from gong.errors import (
+from gongy.errors import (
     AccessDeniedError,
     GongError,
     MalformedRequestError,
@@ -27,7 +27,7 @@ from gong.errors import (
 if TYPE_CHECKING:  # pragma: no cover
     from aiohttp import ClientHandlerType, ClientRequest, ClientResponse
 
-    from gong.errors import GongErrorInfo
+    from gongy.errors import GongErrorInfo
 
 
 class ErrorMiddleware(BaseModel):

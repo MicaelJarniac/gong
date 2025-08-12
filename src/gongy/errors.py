@@ -18,7 +18,7 @@ from typing import TYPE_CHECKING, TypedDict
 if TYPE_CHECKING:  # pragma: no cover
     from typing import ClassVar
 
-    from gong.models import RequestID
+    from gongy.models import RequestID
 
 
 class GongErrorInfo(TypedDict, total=False):

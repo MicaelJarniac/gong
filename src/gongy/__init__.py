@@ -2,6 +2,6 @@
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ("Gong",)
+__all__: tuple[str, ...] = ("Gongy",)
 
-from gong.api import Gong
+from gongy.api import Gongy

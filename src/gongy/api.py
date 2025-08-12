@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ("Gong",)
+__all__: tuple[str, ...] = ("Gongy",)
 
 from typing import TYPE_CHECKING
 
@@ -10,8 +10,8 @@ from aiohttp import ClientSession
 from pydantic import BaseModel, ConfigDict, Field
 from yarl import URL
 
-from gong.models import CallsResponse
-from gong.utils.web import (
+from gongy.models import CallsResponse
+from gongy.utils.web import (
     AuthMiddleware,
     ErrorMiddleware,
     RateLimitMiddleware,
@@ -22,10 +22,10 @@ if TYPE_CHECKING:  # pragma: no cover
     from types import TracebackType
     from typing import Self
 
-    from gong.models import Cursor, WorkspaceID
+    from gongy.models import Cursor, WorkspaceID
 
 
-class Gong(BaseModel):
+class Gongy(BaseModel):
     """Gong API client."""
 
     model_config = ConfigDict(
