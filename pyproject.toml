@@ -1,5 +1,5 @@
 [project]
-name = "gong"
+name = "gongy"
 version = "0.1.0"
 description = "Unofficial Gong Python SDK."
 authors = [
@@ -31,12 +31,12 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project.urls]
-homepage = "https://github.com/MicaelJarniac/gong"
-source = "https://github.com/MicaelJarniac/gong"
-download = "https://pypi.org/project/gong/#files"
-changelog = "https://github.com/MicaelJarniac/gong/blob/main/docs/CHANGELOG.md"
-documentation = "https://gong.readthedocs.io"
-issues = "https://github.com/MicaelJarniac/gong/issues"
+homepage = "https://github.com/MicaelJarniac/gongy"
+source = "https://github.com/MicaelJarniac/gongy"
+download = "https://pypi.org/project/gongy/#files"
+changelog = "https://github.com/MicaelJarniac/gongy/blob/main/docs/CHANGELOG.md"
+documentation = "https://gongy.readthedocs.io"
+issues = "https://github.com/MicaelJarniac/gongy/issues"
 
 [dependency-groups]
 tests = [

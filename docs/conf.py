@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path("..").resolve()))
 
 # -- Project information -----------------------------------------------------
 
-project = "Gong"
+project = "Gongy"
 copyright = "2025, Micael Jarniac"  # noqa: A001
 author = "Micael Jarniac"
 

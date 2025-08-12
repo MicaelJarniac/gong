@@ -1,1 +1,1 @@
-"""Documentation for gong."""
+"""Documentation for gongy."""

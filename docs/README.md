@@ -26,18 +26,18 @@
 [label-repo]: https://img.shields.io/badge/%F0%9F%93%81-repo-darkblue?style=flat-square
 
 <!-- Build -->
-[badge-actions]: https://img.shields.io/github/actions/workflow/status/MicaelJarniac/gong/ci.yml?branch=main&style=flat-square
-[actions]: https://github.com/MicaelJarniac/gong/actions
+[badge-actions]: https://img.shields.io/github/actions/workflow/status/MicaelJarniac/gongy/ci.yml?branch=main&style=flat-square
+[actions]: https://github.com/MicaelJarniac/gongy/actions
 [badge-semantic-release]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
 [semantic-release]: https://github.com/semantic-release/semantic-release
-[badge-pypi]: https://img.shields.io/pypi/v/gong?style=flat-square
-[pypi]: https://pypi.org/project/gong
-[badge-docs]: https://img.shields.io/readthedocs/gong?style=flat-square
-[docs]: https://gong.readthedocs.io
+[badge-pypi]: https://img.shields.io/pypi/v/gongy?style=flat-square
+[pypi]: https://pypi.org/project/gongy
+[badge-docs]: https://img.shields.io/readthedocs/gongy?style=flat-square
+[docs]: https://gongy.readthedocs.io
 
 <!-- Tests -->
-[badge-coverage]: https://img.shields.io/codecov/c/gh/MicaelJarniac/gong?logo=codecov&style=flat-square
-[coverage]: https://codecov.io/gh/MicaelJarniac/gong
+[badge-coverage]: https://img.shields.io/codecov/c/gh/MicaelJarniac/gongy?logo=codecov&style=flat-square
+[coverage]: https://codecov.io/gh/MicaelJarniac/gongy
 [badge-pre-commit]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=flat-square&logo=pre-commit&logoColor=white
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [badge-asv]: https://img.shields.io/badge/benchmarked%20by-asv-blue?style=flat-square
@@ -60,12 +60,12 @@
 [mypy]: http://mypy-lang.org
 
 <!-- Repo -->
-[badge-issues]: https://img.shields.io/github/issues/MicaelJarniac/gong?style=flat-square
-[issues]: https://github.com/MicaelJarniac/gong/issues
-[badge-stars]: https://img.shields.io/github/stars/MicaelJarniac/gong?style=flat-square
-[stars]: https://github.com/MicaelJarniac/gong/stargazers
-[badge-license]: https://img.shields.io/github/license/MicaelJarniac/gong?style=flat-square
-[license]: https://github.com/MicaelJarniac/gong/blob/main/LICENSE
+[badge-issues]: https://img.shields.io/github/issues/MicaelJarniac/gongy?style=flat-square
+[issues]: https://github.com/MicaelJarniac/gongy/issues
+[badge-stars]: https://img.shields.io/github/stars/MicaelJarniac/gongy?style=flat-square
+[stars]: https://github.com/MicaelJarniac/gongy/stargazers
+[badge-license]: https://img.shields.io/github/license/MicaelJarniac/gongy?style=flat-square
+[license]: https://github.com/MicaelJarniac/gongy/blob/main/LICENSE
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [badge-all-contributors]: https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -74,7 +74,7 @@
 [code-of-conduct]: CODE_OF_CONDUCT.md
 <!---->
 
-# Gong
+# Gongy
 Unofficial Gong Python SDK.
 
 [Read the Docs][docs]
@@ -82,33 +82,33 @@ Unofficial Gong Python SDK.
 ## Installation
 
 ### PyPI
-[*gong*][pypi] is available on PyPI:
+[*gongy*][pypi] is available on PyPI:
 
 ```bash
 # With uv
-uv add gong
+uv add gongy
 # With pip
-pip install gong
+pip install gongy
 # With Poetry
-poetry add gong
+poetry add gongy
 ```
 
 ### GitHub
 You can also install the latest version of the code directly from GitHub:
 ```bash
 # With uv
-uv add git+https://github.com/MicaelJarniac/gong
+uv add git+https://github.com/MicaelJarniac/gongy
 # With pip
-pip install git+git://github.com/MicaelJarniac/gong
+pip install git+git://github.com/MicaelJarniac/gongy
 # With Poetry
-poetry add git+git://github.com/MicaelJarniac/gong
+poetry add git+git://github.com/MicaelJarniac/gongy
 ```
 
 ## Usage
 For more examples, see the [full documentation][docs].
 
 ```python
-from gong import gong
+from gongy import gongy
 ```
 
 ## Contributing

@@ -22,7 +22,7 @@
       - [python-semantic-release][python-semantic-release] <sup>[config][pyproject_toml]</sup>
     - [Codecov][codecov]
       - [Action][codecov-action]
-      - [gong][codecov-project]
+      - [gongy][codecov-project]
     - [Nox][nox] <sup>[config][noxfile_py]</sup>
     - [Cookiecutter][cookiecutter]
     - [cruft][cruft] <sup>[config][pyproject_toml]</sup>
@@ -72,7 +72,7 @@
 - Articles
   - [Don't commit `.vscode`][no-editor-config-gitignore]
 
-[codecov-project]: https://app.codecov.io/gh/MicaelJarniac/gong
+[codecov-project]: https://app.codecov.io/gh/MicaelJarniac/gongy
 
 [_pre-commit-config_yaml]: ../.pre-commit-config.yaml
 [pyproject_toml]: ../pyproject.toml

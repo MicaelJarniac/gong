@@ -1,6 +1,6 @@
-Gong
-gong
-gong
+Gongy
+gongy
+gongy
 addopts
 autosummary
 celerybeat

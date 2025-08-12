@@ -1,6 +1,6 @@
-# Contributing to Gong
+# Contributing to Gongy
 
-✨ Thanks for contributing to **Gong**! ✨
+✨ Thanks for contributing to **Gongy**! ✨
 
 As a contributor, here are the guidelines we would like you to follow:
 - [Code of conduct](#code-of-conduct)
@@ -16,13 +16,13 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
 
 ## Code of conduct
 
-Help us keep **Gong** open and inclusive. Please read and follow our [Code of conduct](CODE_OF_CONDUCT.md).
+Help us keep **Gongy** open and inclusive. Please read and follow our [Code of conduct](CODE_OF_CONDUCT.md).
 
 ## How can I contribute?
 
 ### Improve documentation
 
-As a **Gong** user, you are the perfect candidate to help us improve our documentation: typo corrections, clarifications, more examples, etc. Take a look at the [documentation issues that need help](https://github.com/MicaelJarniac/gong/issues?q=is%3Aopen+label%3Adocumentation+label%3A"help+wanted").
+As a **Gongy** user, you are the perfect candidate to help us improve our documentation: typo corrections, clarifications, more examples, etc. Take a look at the [documentation issues that need help](https://github.com/MicaelJarniac/gongy/issues?q=is%3Aopen+label%3Adocumentation+label%3A"help+wanted").
 
 Please follow the [Documentation guidelines](#documentation).
 
@@ -32,21 +32,21 @@ Some issues are created without information requested in the [Bug report guideli
 
 ### Fix bugs and implement features
 
-Confirmed bugs and ready-to-implement features are marked with the [help wanted label](https://github.com/MicaelJarniac/gong/labels/help+wanted). Post a comment on an issue to indicate you would like to work on it and to request help from the community.
+Confirmed bugs and ready-to-implement features are marked with the [help wanted label](https://github.com/MicaelJarniac/gongy/labels/help+wanted). Post a comment on an issue to indicate you would like to work on it and to request help from the community.
 
 ## Using the issue tracker
 
 The issue tracker is the channel for [bug reports](#bug-report), [features requests](#feature-request) and [submitting pull requests](#submitting-a-pull-request) only. <!-- Please use the [Support](docs/support/README.md) and [Get help](README.md#get-help) sections for support, troubleshooting and questions. -->
 
-Before opening an issue or a Pull Request, please use the [GitHub issue search](https://github.com/MicaelJarniac/gong/issues) to make sure the bug or feature request hasn't been already reported or fixed.
+Before opening an issue or a Pull Request, please use the [GitHub issue search](https://github.com/MicaelJarniac/gongy/issues) to make sure the bug or feature request hasn't been already reported or fixed.
 
 ### Bug report
 
-A good bug report shouldn't leave others needing to chase you for more information. Please try to be as detailed as possible in your report and fill the information requested in the [Bug report template](https://github.com/MicaelJarniac/gong/issues/new?template=bug_report.md).
+A good bug report shouldn't leave others needing to chase you for more information. Please try to be as detailed as possible in your report and fill the information requested in the [Bug report template](https://github.com/MicaelJarniac/gongy/issues/new?template=bug_report.md).
 
 ### Feature request
 
-Feature requests are welcome, but take a moment to find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Please provide as much detail and context as possible and fill the information requested in the [Feature request template](https://github.com/MicaelJarniac/gong/issues/new?template=feature_request.md).
+Feature requests are welcome, but take a moment to find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Please provide as much detail and context as possible and fill the information requested in the [Feature request template](https://github.com/MicaelJarniac/gongy/issues/new?template=feature_request.md).
 
 ## Submitting a Pull Request
 
@@ -78,7 +78,7 @@ $ git push origin <topic-branch-name>
 
 **Tips**:
 - For ambitious tasks, open a Pull Request as soon as possible with the `[WIP]` prefix in the title, in order to get feedback and help from the community.
-- [Allow gong maintainers to make changes to your Pull Request branch](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork). This way, we can rebase it and make some minor changes if necessary. All changes we make will be done in new commit and we'll ask for your approval before merging them.
+- [Allow gongy maintainers to make changes to your Pull Request branch](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork). This way, we can rebase it and make some minor changes if necessary. All changes we make will be done in new commit and we'll ask for your approval before merging them.
 
 ## Coding rules
 
@@ -95,17 +95,17 @@ To ensure consistency and quality throughout the source code, all code modificat
 ### Documentation
 
 To ensure consistency and quality, all documentation modifications must:
-- Refer to brand in [bold](https://help.github.com/articles/basic-writing-and-formatting-syntax/#styling-text) with proper capitalization, i.e. **GitHub**, **Gong**
+- Refer to brand in [bold](https://help.github.com/articles/basic-writing-and-formatting-syntax/#styling-text) with proper capitalization, i.e. **GitHub**, **Gongy**
 - Prefer [tables](https://help.github.com/articles/organizing-information-with-tables) over [lists](https://help.github.com/articles/basic-writing-and-formatting-syntax/#lists) when listing key values, i.e. List of options with their description
 - Use [links](https://help.github.com/articles/basic-writing-and-formatting-syntax/#links) when you are referring to:
-  - a **Gong** concept described somewhere else in the documentation, i.e. How to [contribute](CONTRIBUTING.md)
+  - a **Gongy** concept described somewhere else in the documentation, i.e. How to [contribute](CONTRIBUTING.md)
   - a third-party product/brand/service, i.e. Integrate with [GitHub](https://github.com)
   - an external concept or feature, i.e. Create a [GitHub release](https://help.github.com/articles/creating-releases)
-  - a package or module, i.e. The [`@MicaelJarniac/gong`](https://github.com/MicaelJarniac/gong) module
+  - a package or module, i.e. The [`@MicaelJarniac/gongy`](https://github.com/MicaelJarniac/gongy) module
 - Use the [single backtick `code` quoting](https://help.github.com/articles/basic-writing-and-formatting-syntax/#quoting-code) for:
   - commands inside sentences, i.e. the `uv` command
   - programming language keywords, i.e. `for`, `with`, `dict`
-  - packages or modules, i.e. The [`@MicaelJarniac/gong`](https://github.com/MicaelJarniac/gong) module
+  - packages or modules, i.e. The [`@MicaelJarniac/gongy`](https://github.com/MicaelJarniac/gongy) module
 - Use the [triple backtick `code` formatting](https://help.github.com/articles/creating-and-highlighting-code-blocks) for:
   - code examples
   - configuration examples
@@ -203,10 +203,10 @@ The default graphite width of 10mm is always used for performance reasons.
 
 ```bash
 # Clone the repo into the current directory
-git clone https://github.com/MicaelJarniac/gong
+git clone https://github.com/MicaelJarniac/gongy
 
 # Navigate to the newly cloned directory
-cd gong
+cd gongy
 
 # Set up the environment
 uv sync --all-extras
