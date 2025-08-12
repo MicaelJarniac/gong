@@ -20,7 +20,10 @@ classifiers = [
 
 requires-python = ">=3.13"  # py_ver
 dependencies = [
+    "aiohttp>=3.12.15",
     "loguru>=0.7.3",
+    "pydantic>=2.11.7",
+    "yarl>=1.20.1",
 ]
 
 [build-system]
@@ -77,6 +80,7 @@ dev = [
     {include-group = "linting"},
     {include-group = "pre-commit"},
     {include-group = "automation"},
+    "ipykernel>=6.30.1",
     "ipython>=8.18.1",
     "python-semantic-release>=9.19.0",
 ]
