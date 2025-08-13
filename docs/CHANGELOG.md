@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.4.0 (2025-08-13)
+
+### Features
+
+- More endpoints
+  ([`ee1e597`](https://github.com/MicaelJarniac/gongy/commit/ee1e5974943a9afd4cdf440d3187e979bdef3a37))
+
+
 ## v0.3.0 (2025-08-13)
 
 ### Chores
