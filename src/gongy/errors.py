@@ -44,6 +44,13 @@ class GongError(Exception):
         self.request_id = request_id
         self.errors = errors
 
+    def __repr__(self) -> str:
+        """Return a string representation of the error."""
+        return (
+            f"{self.__class__.__name__}(message={self.args[0]!r}, "
+            f"request_id={self.request_id!r}, errors={self.errors!r})"
+        )
+
 
 class MalformedRequestError(GongError):
     """Exception raised for malformed requests.

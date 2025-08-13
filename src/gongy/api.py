@@ -48,7 +48,7 @@ class Gongy(BaseModel):
         if self.raw_session is None:
             msg = (
                 f"Session not initialized. "
-                f"Use 'async with {self.__class__.__name__}(...) as gong:'"
+                f"Use 'async with {self.__class__.__name__}(...) as gongy:'"
             )
             raise RuntimeError(msg)
         return self.raw_session
