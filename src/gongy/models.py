@@ -35,6 +35,7 @@ from typing import Any
 from pydantic import BaseModel, ConfigDict, EmailStr, HttpUrl
 
 from gongy.utils.model_utils import AllTrueModel
+from gongy.utils.types import Milliseconds  # noqa: TC001
 
 type StrID = str
 
@@ -1066,4 +1067,79 @@ class CallsExpandedResponse(BaseModel):
     """Information about the number of records that match the requested filter."""
 
     calls: list[CallEntry]
+    """A list with one entry per call."""
+
+
+class TranscriptSentence(BaseModel):
+    """A single sentence spoken in the monologue."""
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        alias_generator=to_camel,
+        use_attribute_docstrings=True,
+    )
+
+    start: Milliseconds
+    """Start time of the sentence in milliseconds from the start of the call."""
+
+    end: Milliseconds
+    """End time of the sentence in milliseconds from the start of the call."""
+
+    text: str
+    """The sentence text."""
+
+
+class TranscriptMonologue(BaseModel):
+    """A monologue within the call transcript."""
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        alias_generator=to_camel,
+        use_attribute_docstrings=True,
+    )
+
+    speaker_id: SpeakerID
+    """Unique ID of the speaker
+    (cross-reference with `speakerId` in `parties` from `/v2/calls/extensive`)."""
+
+    topic: str | None = None
+    """Name of the topic (if applicable)."""
+
+    sentences: list[TranscriptSentence]
+    """List of sentences spoken in the monologue."""
+
+
+class CallTranscriptEntry(BaseModel):
+    """Transcript data for a specific call."""
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        alias_generator=to_camel,
+        use_attribute_docstrings=True,
+    )
+
+    call_id: CallID
+    """Gong's unique numeric identifier for the call (up to 20 digits)."""
+
+    transcript: list[TranscriptMonologue]
+    """List of monologues for the call."""
+
+
+class CallTranscriptsResponse(BaseModel):
+    """Response containing call transcripts."""
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        alias_generator=to_camel,
+        use_attribute_docstrings=True,
+    )
+
+    request_id: RequestID
+    """A Gong request reference ID generated for this request.
+    Use for troubleshooting."""
+
+    records: RecordsInfo
+    """Information about the number of records that match the requested filter."""
+
+    call_transcripts: list[CallTranscriptEntry]
     """A list with one entry per call."""

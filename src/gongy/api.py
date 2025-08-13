@@ -16,6 +16,7 @@ from gongy.models import (
     CallsExpandedResponse,
     CallsRequest,
     CallsResponse,
+    CallTranscriptsResponse,
     ContentSelector,
     FilterParams,
     UserID,
@@ -196,6 +197,58 @@ class Gongy(BaseModel):
                 ids=ids,
                 primary_user_ids=primary_user_ids,
                 content_selector=content_selector,
+                cursor=cursor,
+            )
+            yield response
+            cursor = response.records.cursor
+            if cursor is None:
+                break
+
+    async def get_call_transcripts_page(
+        self,
+        start: datetime,
+        end: datetime,
+        workspace: WorkspaceID | None = None,
+        ids: list[CallID] | None = None,
+        cursor: Cursor | None = None,
+    ) -> CallTranscriptsResponse:
+        """Get a single page of call transcripts from the Gong API."""
+        url = self.v2 / "calls" / "transcript"
+        calls_request = CallsRequest(
+            cursor=cursor,
+            filter=FilterParams(
+                from_date_time=start,
+                to_date_time=end,
+                workspace_id=workspace,
+                call_ids=ids,
+            ),
+        )
+        async with self.session.post(
+            url,
+            json=calls_request.model_dump(
+                by_alias=True,
+                exclude_none=True,
+                mode="json",
+            ),
+        ) as response:
+            data = await response.json()
+            return CallTranscriptsResponse.model_validate(data)
+
+    async def get_call_transcripts(
+        self,
+        start: datetime,
+        end: datetime,
+        workspace: WorkspaceID | None = None,
+        ids: list[CallID] | None = None,
+    ) -> AsyncGenerator[CallTranscriptsResponse]:
+        """Get call transcripts from the Gong API in batches."""
+        cursor: Cursor | None = None
+        while True:
+            response = await self.get_call_transcripts_page(
+                start=start,
+                end=end,
+                workspace=workspace,
+                ids=ids,
                 cursor=cursor,
             )
             yield response
