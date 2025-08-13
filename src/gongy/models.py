@@ -6,6 +6,7 @@ __all__: tuple[str, ...] = (
     "CallDirection",
     "CallID",
     "CallItem",
+    "CallResponse",
     "CallScope",
     "CallsResponse",
     "Cursor",
@@ -164,3 +165,16 @@ class CallsResponse(BaseModel):
 
     calls: list[CallItem]
     """A list in which each item specifies one call."""
+
+
+class CallResponse(BaseModel):
+    """Call."""
+
+    model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
+
+    request_id: RequestID
+    """A Gong request reference ID generated for this request.
+    Use for troubleshooting."""
+
+    call: CallItem
+    """Call."""

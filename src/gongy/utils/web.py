@@ -4,10 +4,12 @@ from __future__ import annotations
 
 from contextlib import suppress
 
-__all__: tuple[str, ...] = ("AuthMiddleware", "RateLimitMiddleware", "RetryMiddleware")
+__all__: tuple[str, ...] = (
+    "ErrorMiddleware",
+    "RateLimitMiddleware",
+)
 
 import asyncio
-from base64 import b64encode
 from http import HTTPStatus
 from typing import TYPE_CHECKING
 
@@ -67,41 +69,6 @@ class ErrorMiddleware(BaseModel):
         return resp
 
 
-class RetryMiddleware(BaseModel):
-    """Middleware to handle retrying."""
-
-    retries: int = Field(default=3, gt=0)
-    delay: float = Field(default=1.0, gt=0)
-
-    async def __call__(
-        self,
-        req: ClientRequest,
-        handler: ClientHandlerType,
-    ) -> ClientResponse:
-        """Handle retrying.
-
-        Retries the request if it fails.
-        """
-        retries = self.retries
-        while True:
-            resp = await handler(req)
-            if not resp.ok:
-                logger.warning(
-                    "Request failed: {method} {url}\n"
-                    "Retrying... ({retries} retries left)",
-                    method=req.method,
-                    url=req.url,
-                    retries=retries,
-                )
-                if retries <= 0:
-                    resp.raise_for_status()
-                    raise RuntimeError
-                await asyncio.sleep(self.delay)  # Simple backoff strategy
-                retries -= 1
-                continue
-            return resp
-
-
 class RateLimitMiddleware(BaseModel):
     """Middleware to handle rate limiting."""
 
@@ -137,20 +104,3 @@ class RateLimitMiddleware(BaseModel):
                 retries -= 1
                 continue
             return resp
-
-
-class AuthMiddleware(BaseModel):
-    """Middleware to handle authentication."""
-
-    api_key: str
-    secret: str
-
-    async def __call__(
-        self,
-        req: ClientRequest,
-        handler: ClientHandlerType,
-    ) -> ClientResponse:
-        """Handle authentication."""
-        token = b64encode(f"{self.api_key}:{self.secret}".encode()).decode()
-        req.headers["Authorization"] = f"Basic {token}"
-        return await handler(req)

@@ -6,18 +6,18 @@ __all__: tuple[str, ...] = ("Gongy",)
 
 from typing import TYPE_CHECKING
 
-from aiohttp import ClientSession
+from aiohttp import BasicAuth, ClientSession
 from pydantic import BaseModel, ConfigDict, Field
 from yarl import URL
 
-from gongy.models import CallsResponse
+from gongy.models import CallID, CallResponse, CallsResponse
 from gongy.utils.web import (
-    AuthMiddleware,
     ErrorMiddleware,
     RateLimitMiddleware,
 )
 
 if TYPE_CHECKING:  # pragma: no cover
+    from collections.abc import AsyncGenerator
     from datetime import datetime
     from types import TracebackType
     from typing import Self
@@ -56,11 +56,14 @@ class Gongy(BaseModel):
     async def __aenter__(self) -> Self:
         """Enter the async context."""
         self.raw_session = ClientSession(
+            auth=BasicAuth(
+                login=self.api_key,
+                password=self.secret,
+            ),
             middlewares=(
-                AuthMiddleware(api_key=self.api_key, secret=self.secret),
                 ErrorMiddleware(),
                 RateLimitMiddleware(retries=self.retries, default_delay=self.delay),
-            )
+            ),
         )
         await self.session.__aenter__()
         return self
@@ -80,14 +83,14 @@ class Gongy(BaseModel):
         """Get the v2 API URL."""
         return self.base_url / "v2"
 
-    async def get_calls(
+    async def get_calls_page(
         self,
         start: datetime,
         end: datetime,
         workspace: WorkspaceID | None = None,
         cursor: Cursor | None = None,
     ) -> CallsResponse:
-        """Get calls from the Gong API."""
+        """Get a single page of calls from the Gong API."""
         url = self.v2 / "calls"
         params = {
             "fromDateTime": start.isoformat(),
@@ -100,3 +103,33 @@ class Gongy(BaseModel):
         async with self.session.get(url, params=params) as response:
             data = await response.json()
             return CallsResponse.model_validate(data)
+
+    async def get_calls(
+        self,
+        start: datetime,
+        end: datetime,
+        workspace: WorkspaceID | None = None,
+    ) -> AsyncGenerator[CallsResponse]:
+        """Get calls from the Gong API in batches."""
+        cursor: Cursor | None = None
+        while True:
+            response = await self.get_calls_page(
+                start=start,
+                end=end,
+                workspace=workspace,
+                cursor=cursor,
+            )
+            yield response
+            cursor = response.records.cursor
+            if cursor is None:
+                break
+
+    async def get_call(
+        self,
+        id: CallID,
+    ) -> CallResponse:
+        """Get a single call from the Gong API."""
+        url = self.v2 / "calls" / id
+        async with self.session.get(url) as response:
+            data = await response.json()
+            return CallResponse.model_validate(data)
