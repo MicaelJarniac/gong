@@ -10,7 +10,16 @@ from aiohttp import BasicAuth, ClientSession
 from pydantic import BaseModel, ConfigDict, Field
 from yarl import URL
 
-from gongy.models import CallID, CallResponse, CallsResponse
+from gongy.models import (
+    CallID,
+    CallResponse,
+    CallsExpandedResponse,
+    CallsRequest,
+    CallsResponse,
+    ContentSelector,
+    FilterParams,
+    UserID,
+)
 from gongy.utils.web import (
     ErrorMiddleware,
     RateLimitMiddleware,
@@ -133,3 +142,63 @@ class Gongy(BaseModel):
         async with self.session.get(url) as response:
             data = await response.json()
             return CallResponse.model_validate(data)
+
+    async def get_calls_extensive_page(  # noqa: PLR0913
+        self,
+        start: datetime,
+        end: datetime,
+        workspace: WorkspaceID | None = None,
+        ids: list[CallID] | None = None,
+        primary_user_ids: list[UserID] | None = None,
+        content_selector: ContentSelector | None = None,
+        cursor: Cursor | None = None,
+    ) -> CallsExpandedResponse:
+        """Get a single page of extensive calls from the Gong API."""
+        url = self.v2 / "calls" / "extensive"
+        calls_request = CallsRequest(
+            cursor=cursor,
+            filter=FilterParams(
+                from_date_time=start,
+                to_date_time=end,
+                workspace_id=workspace,
+                call_ids=ids,
+                primary_user_ids=primary_user_ids,
+            ),
+            content_selector=content_selector,
+        )
+        async with self.session.post(
+            url,
+            json=calls_request.model_dump(
+                by_alias=True,
+                exclude_none=True,
+                mode="json",
+            ),
+        ) as response:
+            data = await response.json()
+            return CallsExpandedResponse.model_validate(data)
+
+    async def get_calls_extensive(  # noqa: PLR0913
+        self,
+        start: datetime,
+        end: datetime,
+        workspace: WorkspaceID | None = None,
+        ids: list[CallID] | None = None,
+        primary_user_ids: list[UserID] | None = None,
+        content_selector: ContentSelector | None = None,
+    ) -> AsyncGenerator[CallsExpandedResponse]:
+        """Get extensive calls from the Gong API in batches."""
+        cursor: Cursor | None = None
+        while True:
+            response = await self.get_calls_extensive_page(
+                start=start,
+                end=end,
+                workspace=workspace,
+                ids=ids,
+                primary_user_ids=primary_user_ids,
+                content_selector=content_selector,
+                cursor=cursor,
+            )
+            yield response
+            cursor = response.records.cursor
+            if cursor is None:
+                break

@@ -1,6 +1,3 @@
-Gongy
-gongy
-gongy
 addopts
 autosummary
 celerybeat
@@ -13,7 +10,10 @@ epub
 errorlevel
 furo
 genindex
+gongy
+Gongy
 htmlcov
+HUBSPOT
 ignorelist
 intersphinx
 ipynb
