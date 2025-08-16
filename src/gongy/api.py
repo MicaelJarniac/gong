@@ -146,8 +146,8 @@ class Gongy(BaseModel):
 
     async def get_calls_extensive_page(  # noqa: PLR0913
         self,
-        start: datetime,
-        end: datetime,
+        start: datetime | None = None,
+        end: datetime | None = None,
         workspace: WorkspaceID | None = None,
         ids: list[CallID] | None = None,
         primary_user_ids: list[UserID] | None = None,
@@ -180,8 +180,8 @@ class Gongy(BaseModel):
 
     async def get_calls_extensive(  # noqa: PLR0913
         self,
-        start: datetime,
-        end: datetime,
+        start: datetime | None = None,
+        end: datetime | None = None,
         workspace: WorkspaceID | None = None,
         ids: list[CallID] | None = None,
         primary_user_ids: list[UserID] | None = None,
@@ -206,8 +206,8 @@ class Gongy(BaseModel):
 
     async def get_call_transcripts_page(
         self,
-        start: datetime,
-        end: datetime,
+        start: datetime | None = None,
+        end: datetime | None = None,
         workspace: WorkspaceID | None = None,
         ids: list[CallID] | None = None,
         cursor: Cursor | None = None,
@@ -236,8 +236,8 @@ class Gongy(BaseModel):
 
     async def get_call_transcripts(
         self,
-        start: datetime,
-        end: datetime,
+        start: datetime | None = None,
+        end: datetime | None = None,
         workspace: WorkspaceID | None = None,
         ids: list[CallID] | None = None,
     ) -> AsyncGenerator[CallTranscriptsResponse]:
