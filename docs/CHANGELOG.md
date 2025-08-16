@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.5.1 (2025-08-16)
+
+### Bug Fixes
+
+- Optional args
+  ([`4dac2c3`](https://github.com/MicaelJarniac/gongy/commit/4dac2c38ec16a79197217dcb460838a128c9e8a9))
+
+
 ## v0.5.0 (2025-08-13)
 
 
