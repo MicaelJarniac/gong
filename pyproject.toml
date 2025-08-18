@@ -1,6 +1,6 @@
 [project]
 name = "gongy"
-version = "0.5.2"
+version = "0.5.3"
 description = "Unofficial Gong Python SDK."
 authors = [
   {name = "Micael Jarniac", email = "micael@jarniac.dev"},

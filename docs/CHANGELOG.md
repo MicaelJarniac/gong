@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.5.3 (2025-08-18)
+
+### Bug Fixes
+
+- Milliseconds now stays a timedelta
+  ([`af8d330`](https://github.com/MicaelJarniac/gongy/commit/af8d3309aa8a760634c336b260792b8e3a44dab4))
+
+
 ## v0.5.2 (2025-08-18)
 
 
