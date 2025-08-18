@@ -11,12 +11,13 @@ __all__: tuple[str, ...] = (
 from datetime import timedelta
 from typing import Annotated
 
-from pydantic import BeforeValidator, PlainSerializer
+from pydantic import BeforeValidator, SerializerFunctionWrapHandler
+from pydantic.functional_serializers import WrapSerializer
 
 
-def ms_to_timedelta(v: float | timedelta) -> timedelta:
+def ms_to_timedelta(v: int) -> timedelta:
     """Convert milliseconds to timedelta."""
-    return timedelta(milliseconds=v) if isinstance(v, (int, float)) else v
+    return timedelta(milliseconds=v)
 
 
 def timedelta_to_ms(td: timedelta) -> int:
@@ -24,8 +25,14 @@ def timedelta_to_ms(td: timedelta) -> int:
     return int(td.total_seconds() * 1000)
 
 
+def wrap_milliseconds(td: timedelta, nxt: SerializerFunctionWrapHandler) -> int:
+    """Serialize Milliseconds."""
+    out: int = nxt(timedelta_to_ms(td))
+    return out
+
+
 Milliseconds = Annotated[
     timedelta,
     BeforeValidator(ms_to_timedelta),
-    PlainSerializer(timedelta_to_ms),
+    WrapSerializer(wrap_milliseconds),
 ]
