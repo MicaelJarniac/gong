@@ -1,9 +1,15 @@
 # CHANGELOG
 
 
+## v0.5.2 (2025-08-18)
+
+
 ## v0.5.1 (2025-08-16)
 
 ### Bug Fixes
+
+- Milliseconds conversion
+  ([`638c4de`](https://github.com/MicaelJarniac/gongy/commit/638c4de066b4606da80f2ef1510bc4724026303e))
 
 - Optional args
   ([`4dac2c3`](https://github.com/MicaelJarniac/gongy/commit/4dac2c38ec16a79197217dcb460838a128c9e8a9))
